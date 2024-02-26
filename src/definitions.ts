@@ -1,3 +1,3 @@
 export interface NativeCompassPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  getCurrentHeading(): Promise<{ value: number }>;
 }
