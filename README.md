@@ -23,10 +23,10 @@ npx cap sync
 ### getCurrentHeading()
 
 ```typescript
-getCurrentHeading() => Promise<{ value: number; }>
+getCurrentHeading() => any
 ```
 
-**Returns:** <code>Promise&lt;{ value: number; }&gt;</code>
+**Returns:** <code>any</code>
 
 --------------------
 

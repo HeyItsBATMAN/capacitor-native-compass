@@ -1,9 +1,9 @@
-import { WebPlugin } from '@capacitor/core';
+import { WebPlugin } from "@capacitor/core";
 
-import type { NativeCompassPlugin } from './definitions';
+import type { NativeCompassPlugin } from "./definitions";
 
 export class NativeCompassWeb extends WebPlugin implements NativeCompassPlugin {
   async getCurrentHeading(): Promise<{ value: number }> {
-    return Promise.resolve({ value: -1 });
+    return Promise.reject("NativeCompass not implemented on web");
   }
 }

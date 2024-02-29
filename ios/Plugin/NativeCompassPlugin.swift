@@ -9,10 +9,26 @@ import Capacitor
 public class NativeCompassPlugin: CAPPlugin {
     private let implementation = NativeCompass()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
+    override public func load() {
+        implementation.startListeners()
+
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: OperationQueue.main) {
+            [weak self] (_) in self?.implementation.startListeners()
+        }
+
+        NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: OperationQueue.main) {
+            [weak self] (_) in self?.implementation.stopListeners()
+        }
+    }
+
+    @objc func getCurrentHeading(_ call: CAPPluginCall) {
+        let heading = implementation.getCurrentHeading()
+        if heading < 0 {
+            call.reject("Failed to get heading. Did the user permit location access?")
+            return
+        }
         call.resolve([
-            "value": implementation.echo(value)
+            "value": heading
         ])
     }
 }
