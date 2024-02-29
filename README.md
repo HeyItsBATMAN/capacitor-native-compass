@@ -1,6 +1,6 @@
-<center>
+<p align="center">
     <img src="https://raw.githubusercontent.com/HeyItsBATMAN/capacitor-native-compass/master/logo.svg" width="640">
-</center>
+</p>
 
 Capacitor plugin for an easy compass using the native device sensors
 
@@ -15,7 +15,7 @@ npx cap sync
 
 <docgen-index>
 
-* [`getCurrentHeading()`](#getcurrentheading)
+- [`getCurrentHeading()`](#getcurrentheading)
 
 </docgen-index>
 
@@ -35,6 +35,6 @@ Not implemented on Web.
 
 **Returns:** <code>Promise&lt;{ value: number; }&gt;</code>
 
---------------------
+---
 
 </docgen-api>
