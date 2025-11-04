@@ -1,71 +1,40 @@
 {
-  "name": "capacitor-native-compass",
-  "version": "0.0.3",
-  "description": "Capacitor plugin for an easy compass using the native device sensors",
-  "main": "dist/plugin.cjs.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
-  "unpkg": "dist/plugin.js",
+  "devDependencies": {
+    "@capacitor/ios": "^6.0.0",
+    "@ionic/swiftlint-config": "^2.0.0",
+    "typescript": "~5.9.3",
+    "rimraf": "^6.1.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/docgen": "^0.3.0",
+    "@ionic/eslint-config": "^0.4.0",
+    "prettier-plugin-java": "~2.7.7",
+    "swiftlint": "^2.0.0",
+    "eslint": "^8.57.0",
+    "@ionic/prettier-config": "^4.0.0",
+    "rollup": "^2.79.2",
+    "prettier": "~3.6.2"
+  },
   "files": [
     "android/src/main/",
     "android/build.gradle",
     "dist/",
-    "ios/Plugin/",
-    "CapacitorNativeCompass.podspec"
+    "CapacitorNativeCompass.podspec",
+    "ios/Sources",
+    "ios/Tests",
+    "Package.swift"
   ],
+  "module": "dist/esm/index.js",
   "author": "Kai Niebes",
-  "license": "GPL-3.0-or-later",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HeyItsBATMAN/capacitor-native-compass.git.git"
+  "description": "Capacitor plugin for an easy compass using the native device sensors",
+  "peerDependencies": {
+    "@capacitor/core": "^6.0.0"
   },
   "bugs": {
     "url": "https://github.com/HeyItsBATMAN/capacitor-native-compass.git/issues"
   },
-  "keywords": [
-    "capacitor",
-    "plugin",
-    "native"
-  ],
-  "scripts": {
-    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
-    "verify:android": "cd android && ./gradlew clean build test && cd ..",
-    "verify:web": "npm run build",
-    "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
-    "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
-    "eslint": "eslint . --ext ts",
-    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
-    "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api NativeCompassPlugin --output-readme README.md --output-json dist/docs.json",
-    "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
-    "clean": "rimraf ./dist",
-    "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
-  },
-  "devDependencies": {
-    "@capacitor/android": "^5.0.0",
-    "@capacitor/core": "^5.0.0",
-    "@capacitor/docgen": "^0.0.18",
-    "@capacitor/ios": "^5.0.0",
-    "@ionic/eslint-config": "^0.3.0",
-    "@ionic/prettier-config": "^1.0.1",
-    "@ionic/swiftlint-config": "^1.1.2",
-    "eslint": "^7.11.0",
-    "prettier": "~2.3.0",
-    "prettier-plugin-java": "~1.0.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.32.0",
-    "swiftlint": "^1.0.1",
-    "typescript": "~4.1.5"
-  },
-  "peerDependencies": {
-    "@capacitor/core": "^5.0.0"
-  },
   "swiftlint": "@ionic/swiftlint-config",
-  "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
-  },
+  "types": "dist/esm/index.d.ts",
   "capacitor": {
     "ios": {
       "src": "ios"
@@ -73,5 +42,38 @@
     "android": {
       "src": "android"
     }
-  }
+  },
+  "name": "capacitor-native-compass",
+  "repository": {
+    "url": "git+https://github.com/HeyItsBATMAN/capacitor-native-compass.git.git",
+    "type": "git"
+  },
+  "eslintConfig": {
+    "extends": "@ionic/eslint-config/recommended"
+  },
+  "unpkg": "dist/plugin.js",
+  "version": "6.0.0",
+  "scripts": {
+    "verify:ios": "xcodebuild -scheme CapacitorNativeCompass -destination generic/platform=iOS",
+    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
+    "watch": "tsc --watch",
+    "clean": "rimraf ./dist",
+    "swiftlint": "node-swiftlint",
+    "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
+    "docgen": "docgen --api NativeCompassPlugin --output-readme README.md --output-json dist/docs.json",
+    "prepublishOnly": "npm run build",
+    "verify:web": "npm run build",
+    "eslint": "eslint . --ext ts",
+    "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
+    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
+    "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
+    "verify:android": "cd android && ./gradlew clean build test && cd .."
+  },
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "license": "GPL-3.0-or-later",
+  "main": "dist/plugin.cjs.js"
 }

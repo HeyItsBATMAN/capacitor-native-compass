@@ -6,7 +6,12 @@ import Capacitor
  * here: https://capacitorjs.com/docs/plugins/ios
  */
 @objc(NativeCompassPlugin)
-public class NativeCompassPlugin: CAPPlugin {
+public class NativeCompassPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "NativeCompassPlugin" 
+    public let jsName = "NativeCompass" 
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "getCurrentHeading", returnType: CAPPluginReturnPromise),
+    ] 
     private let implementation = NativeCompass()
 
     override public func load() {
