@@ -11,11 +11,19 @@ npm install capacitor-native-compass
 npx cap sync
 ```
 
+## Version compatibility chart
+
+| Capacitor | capacitor-native-compass |
+|-----------|-------------------------|
+| 5.x       | 0.x                     |
+| 6.x       | 6.x                     |
+| 7.x       | 7.x                     |
+
 ## API
 
 <docgen-index>
 
-- [`getCurrentHeading()`](#getcurrentheading)
+* [`getCurrentHeading()`](#getcurrentheading)
 
 </docgen-index>
 
@@ -35,6 +43,6 @@ Not implemented on Web.
 
 **Returns:** <code>Promise&lt;{ value: number; }&gt;</code>
 
----
+--------------------
 
 </docgen-api>

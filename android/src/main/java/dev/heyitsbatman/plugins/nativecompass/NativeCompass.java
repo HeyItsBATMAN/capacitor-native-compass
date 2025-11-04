@@ -23,19 +23,22 @@ public class NativeCompass implements SensorEventListener {
   public NativeCompass(AppCompatActivity activity) {
     Log.d(TAG, "Initializing NativeCompass");
     this.activity = activity;
-    this.sensorManager =
-      (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
-    this.magnetometer =
-      this.sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-    this.accelerometer =
-      this.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+    this.sensorManager = (SensorManager) activity.getSystemService(
+      Context.SENSOR_SERVICE
+    );
+    this.magnetometer = this.sensorManager.getDefaultSensor(
+      Sensor.TYPE_MAGNETIC_FIELD
+    );
+    this.accelerometer = this.sensorManager.getDefaultSensor(
+      Sensor.TYPE_ACCELEROMETER
+    );
 
     Log.d(
       TAG,
       "SensorManager: " +
-      String.valueOf(this.sensorManager != null) +
-      " Magnetometer" +
-      String.valueOf(this.magnetometer != null)
+        String.valueOf(this.sensorManager != null) +
+        " Magnetometer" +
+        String.valueOf(this.magnetometer != null)
     );
 
     if (accelerometer == null || magnetometer == null) {
@@ -52,15 +55,15 @@ public class NativeCompass implements SensorEventListener {
 
   public void registerListeners() {
     this.sensorManager.registerListener(
-        this,
-        this.magnetometer,
-        SensorManager.SENSOR_DELAY_NORMAL
-      );
+      this,
+      this.magnetometer,
+      SensorManager.SENSOR_DELAY_NORMAL
+    );
     this.sensorManager.registerListener(
-        this,
-        this.accelerometer,
-        SensorManager.SENSOR_DELAY_NORMAL
-      );
+      this,
+      this.accelerometer,
+      SensorManager.SENSOR_DELAY_NORMAL
+    );
   }
 
   public void unregisterListeners() {
@@ -92,8 +95,9 @@ public class NativeCompass implements SensorEventListener {
 
     Vector fieldRotatedVector = new Vector(axisVector);
     fieldRotatedVector.multiply(axisVector.dotProduct(fieldVector));
-    Vector axisCrossProductField = new Vector(axisVector)
-      .crossProduct(fieldVector);
+    Vector axisCrossProductField = new Vector(axisVector).crossProduct(
+      fieldVector
+    );
     Vector axisCrossProductFieldCosAngle = new Vector(axisCrossProductField);
     axisCrossProductFieldCosAngle.multiply(Math.cos(angle));
     Vector axisCrossProductFieldSinAngle = new Vector(axisCrossProductField);

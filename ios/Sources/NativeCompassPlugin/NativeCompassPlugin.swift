@@ -7,11 +7,11 @@ import Capacitor
  */
 @objc(NativeCompassPlugin)
 public class NativeCompassPlugin: CAPPlugin, CAPBridgedPlugin {
-    public let identifier = "NativeCompassPlugin" 
-    public let jsName = "NativeCompass" 
+    public let identifier = "NativeCompassPlugin"
+    public let jsName = "NativeCompass"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "getCurrentHeading", returnType: CAPPluginReturnPromise),
-    ] 
+        CAPPluginMethod(name: "getCurrentHeading", returnType: CAPPluginReturnPromise)
+    ]
     private let implementation = NativeCompass()
 
     override public func load() {
